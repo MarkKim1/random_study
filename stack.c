@@ -69,4 +69,5 @@ int main () {
     for(int i = 0; i < stackResult; i++){
         printf("%d\n", stack_for_result[i]);
     }
+    return 0;
 }
