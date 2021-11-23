@@ -70,4 +70,5 @@ int main () {
         printf("%d\n", stack_for_result[i]);
     }
     return 0;
+    //raerfasdfadsgasdgasdfasdgsfgafa
 }
