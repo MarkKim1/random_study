@@ -13,7 +13,7 @@ int main () {
         getline(cin, str);
         str+='\n';
         stack<char> stk;
-        for(char ch : str){
+        for(char &ch : str){
             if(ch == ' ' || ch == '\n'){
                 while(!stk.empty()){
                     cout << stk.top();
