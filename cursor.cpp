@@ -18,14 +18,12 @@ int main () {
                 cur -= 1;
                 break;
             }
-                cout << str << endl;
         }
         else if(type == 'D'){
             while(cur < str.size()){
                 cur+= 1;
                 break;
             }
-            cout << str << endl;
         }
         else if(type == 'B'){
             while(cur > 0){
@@ -33,13 +31,11 @@ int main () {
                 cur -= 1;
                 break;
             }
-            cout << str << endl;
         }
         else if(type == 'P'){
             cin >> a;
             str.insert(cur,1,a);
             cur++;
-            cout << str << endl;
         }
     }
     cout << str << endl;
