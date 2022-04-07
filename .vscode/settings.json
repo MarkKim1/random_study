@@ -4,6 +4,8 @@
         "ostream": "cpp",
         "istream": "cpp",
         "bitset": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp"
     }
 }
