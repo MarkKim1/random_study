@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
+#include <algorithm>
 using namespace std;
 
     vector<int> Multiply(vector<int> num1, vector<int> num2){
@@ -18,6 +18,14 @@ using namespace std;
             }
         }
         //0으로 시작하는 부분을 제거한다
+        result = {find_if_not(begin(result), end(result), [](int a){return a== 0;}),end(result)};
+        if(empty(result)){
+            return {0};
+        }
+        result.front() *= sign;
+        return result;
+
+        }
 
     }
 
