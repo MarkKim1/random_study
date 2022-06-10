@@ -5,6 +5,9 @@ int f[41];
 int fib1(int n,int count1){
     if(n == 1 || n == 2) return 1;
     return fib1(n-1,count1+1) + fib1(n-2,count1+1);
+    const int n1 = 100;
+    const int m1 = 100;
+    int *arr = new int[n1][m1];
 }
 
 int fib2(int n, int count2){
