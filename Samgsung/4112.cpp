@@ -41,13 +41,22 @@ int BFS(pair<int, int> start, pair<int, int> end, int minji, int treasure)
     while (A.first != end.first)
     {
         A = {A.first + 1, A.second};
+        // cout << pyramid[A.first][A.second] << endl;
         a++;
     }
 
     while (B.first != end.first)
     {
         B = {B.first + 1, B.second + 1};
+        // cout << B.first << " " << B.second << endl;
         b++;
+    }
+    if (B.first == pyramid.size() - 1)
+    {
+        if (B.second >= pyramid[B.first].size())
+        {
+            B.second = pyramid[B.first].size() - 1;
+        }
     }
     if (pyramid[A.first][A.second] <= treasure and treasure <= pyramid[B.first][B.second])
     {
@@ -67,18 +76,15 @@ int main()
     {
         int minji, treasure;
         cin >> minji >> treasure;
-
-        if (minji == treasure)
-        {
-            printf("#%d %d\n", i + 1, 0);
-            continue;
-        }
         if (treasure < minji)
         {
             swap(minji, treasure);
         }
         auto start = map[minji];
         auto end = map[treasure];
+        // cout << "this is END: " << end.first << " " << end.second;
+        // cout << endl;
+        // cout << pyramid[140][129];
         int result = BFS(start, end, minji, treasure);
         printf("#%d %d\n", i + 1, result);
     }
