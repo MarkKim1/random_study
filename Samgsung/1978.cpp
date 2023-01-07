@@ -32,3 +32,4 @@ int main()
     }
     cout << T - not_prime << endl;
 }
+s
