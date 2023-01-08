@@ -11,6 +11,7 @@
         "unordered_map": "cpp",
         "vector": "cpp",
         "ostream": "cpp",
-        "locale": "cpp"
+        "locale": "cpp",
+        "queue": "cpp"
     }
 }

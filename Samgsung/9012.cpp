@@ -13,6 +13,7 @@ int main()
         cin >> S;
         for (int i = 0; i < S.size(); i++)
         {
+
             if (S[i] == '(')
             {
                 curr++;
@@ -27,7 +28,7 @@ int main()
             }
         }
         if (curr == 0)
-        {
+        {   
             cout << "YES" << endl;
         }
         else
