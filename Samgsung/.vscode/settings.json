@@ -15,6 +15,7 @@
         "queue": "cpp",
         "unordered_set": "cpp",
         "iosfwd": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ios": "cpp"
     }
 }
