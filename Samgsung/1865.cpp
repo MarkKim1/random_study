@@ -8,30 +8,28 @@ struct INFO
     int S, E, T;
 };
 
-bool solve(int N, vector<INFO> graph)
+bool solve(vector<INFO> &graph, int N, vector<int> &dist)
 {
-    vector<int> dist(N + 1);
     dist[1] = 0;
-
     for (int i = 0; i < N - 1; i++)
     {
-        for (int j = 0; j < graph.size(); j++)
+        for (int i = 0; i < graph.size(); i++)
         {
-            int s = graph[j].S;
-            int e = graph[j].E;
-            int t = graph[j].T;
-            if (dist[e] > dist[s] + t)
+            int s = graph[i].S;
+            int e = graph[i].E;
+            int t = graph[i].T;
+            if (dist[s] != INT_MAX and dist[e] > t + dist[s])
             {
-                dist[e] = dist[s] + t;
+                dist[e] = t + dist[s];
             }
         }
     }
-    for (int j = 0; j < graph.size(); j++)
+    for (int i = 0; i < graph.size(); i++)
     {
-        int s = graph[j].S;
-        int e = graph[j].E;
-        int t = graph[j].T;
-        if (dist[e] > dist[s] + t)
+        int s = graph[i].S;
+        int e = graph[i].E;
+        int t = graph[i].T;
+        if (dist[s] != INT_MAX and dist[e] > t + dist[s])
         {
             return true;
         }
@@ -41,17 +39,14 @@ bool solve(int N, vector<INFO> graph)
 
 int main()
 {
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ios_base::sync_with_stdio(false);
     int TC;
     cin >> TC;
-    while (TC--)
+    for (int i = 0; i < TC; i++)
     {
-        vector<INFO> graph;
         int N, M, W;
         cin >> N >> M >> W;
-        int s, e, t;
+        vector<INFO> graph;
+        vector<int> dist(N + 1);
         for (int i = 0; i < M; i++)
         {
             int s, e, t;
@@ -65,14 +60,15 @@ int main()
             cin >> s >> e >> t;
             graph.push_back({s, e, -t});
         }
-        if (solve(N, graph))
+        if (solve(graph, N, dist))
         {
-            cout << "YES\n";
+            cout << "YES"
+                 << "\n";
         }
         else
         {
-            cout << "NO\n";
+            cout << "NO"
+                 << "\n";
         }
     }
-    return 0;
 }

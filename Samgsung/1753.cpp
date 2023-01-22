@@ -2,53 +2,62 @@
 #include <vector>
 #include <queue>
 #include <limits.h>
-
 using namespace std;
 
-vector<vector<pair<int, int>>> map;
 int V, E;
-int root;
-int main()
+int start;
+int u, v, w;
+
+void solve(vector<vector<pair<int, int>>> graph, vector<int> &dist)
 {
-    cin >> V >> E;
-    cin >> root;
-    map.resize(V + 1);
-    vector<int> visited(V + 1, INT_MAX);
+    dist[start] = 0;
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    for (int i = 0; i < E; i++)
-    {
-        int u, v, w;
-        cin >> u >> v >> w;
-        map[u].push_back(make_pair(v, w));
-    }
-    pq.push(make_pair(0, root));
+    pq.push({0, start});
     while (!pq.empty())
     {
-        int curr = pq.top().second;
-        int weight = pq.top().first;
+        auto curr = pq.top();
         pq.pop();
-        for (auto neighbors : map[curr])
+
+        for (int i = 0; i < graph[curr.second].size(); i++)
         {
-            int next_node = neighbors.first;
-            int weight_to_next = neighbors.second;
-            if (visited[next_node] > weight + weight_to_next)
+            int next_node = graph[curr.second][i].first;
+            int weight_from_start = graph[curr.second][i].second;
+            if (dist[next_node] > curr.first + weight_from_start)
             {
-                visited[next_node] = weight + weight_to_next;
-                pq.push(make_pair(visited[next_node], next_node));
+                dist[next_node] = curr.first + weight_from_start;
+                pq.push({dist[next_node], next_node});
             }
         }
     }
-    visited[root] = 0;
-    for (int i = 1; i < visited.size(); i++)
+}
+
+int main()
+{
+    cin >> V >> E;
+    vector<vector<pair<int, int>>> graph(V + 1);
+    vector<int> dist(V + 1, INT_MAX);
+    cin >> start;
+    for (int i = 0; i < E; i++)
     {
-        if (visited[i] == INT_MAX)
+        cin >> u >> v >> w;
+        graph[u].push_back({v, w});
+    }
+    solve(graph, dist);
+
+    for (int i = 1; i < dist.size(); i++)
+    {
+        if (i == start)
+        {
+            cout << 0 << "\n";
+        }
+        else if (dist[i] == INT_MAX)
         {
             cout << "INF"
                  << "\n";
         }
         else
         {
-            cout << visited[i] << "\n";
+            cout << dist[i] << "\n";
         }
     }
 }
