@@ -2,9 +2,9 @@
 #include <vector>
 #include <unordered_set>
 using namespace std;
-bool col[300];
-bool dig[300];    // "/"
-bool disdig[300]; // "\"
+bool col[15];
+bool dig[30];    // "/"
+bool disdig[30]; // "\"
 int result = 0;
 int T;
 
