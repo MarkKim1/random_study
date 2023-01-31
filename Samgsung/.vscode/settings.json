@@ -20,6 +20,7 @@
         "__split_buffer": "cpp",
         "deque": "cpp",
         "string": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "limits": "cpp"
     }
 }
