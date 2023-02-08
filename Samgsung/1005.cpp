@@ -17,7 +17,6 @@ int main()
         unordered_map<int, vector<int>> map;
         vector<int> depends(A + 1);
         queue<int> q;
-        // vector<int> finished_weight(A + 1, INT_MIN);
         for (int i = 1; i <= A; i++)
         {
             cin >> weight[i];
