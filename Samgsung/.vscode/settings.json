@@ -21,6 +21,22 @@
         "deque": "cpp",
         "string": "cpp",
         "stack": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "__hash_table": "cpp",
+        "__locale": "cpp",
+        "__node_handle": "cpp",
+        "__string": "cpp",
+        "__tree": "cpp",
+        "memory_resource": "cpp",
+        "iterator": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "set": "cpp",
+        "string_view": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "__functional_03": "cpp",
+        "__functional_base_03": "cpp",
+        "functional": "cpp"
     }
 }
