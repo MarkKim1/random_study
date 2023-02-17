@@ -1,54 +1,45 @@
 #include <iostream>
 #include <string>
-#include <stack>
 using namespace std;
 
 int main()
 {
-    string str, bomb, result = "", temp = "";
+    string str, bomb, temp = "";
     cin >> str >> bomb;
-    int str_index = 0;
-    int bomb_index = 0;
-    stack<char> stk;
-    while (str_index < str.size())
+    for (int i = 0; i < str.size(); i++)
     {
-        result += str[str_index];
-        if (str[str_index] == bomb[0])
+        temp += str[i];
+        if (temp.back() == bomb.back())
         {
-            result.pop_back();
-            while (str[str_index] == bomb[bomb_index])
+            bool is_bomb = true;
+            if (temp.size() < bomb.size())
             {
-                result.push_back(str[str_index]);
-                temp.push_back(str[str_index]);
-                str_index++;
-                bomb_index++;
+                continue;
             }
-            if (temp == bomb)
+            for (int j = 0; j < bomb.size(); j++)
             {
-                break;
+                if (temp[temp.size() - bomb.size() + j] != bomb[j])
+                {
+                    is_bomb = false;
+                    break;
+                }
             }
-            else
+            if (is_bomb)
             {
-                temp = "";
-                bomb_index = 0;
+                for (int j = 0; j < bomb.size(); j++)
+                {
+                    temp.pop_back();
+                }
             }
         }
-        else
-        {
-            str_index++;
-        }
     }
-    for (int i = 0; i < bomb.size(); i++)
-    {
-        result.pop_back();
-    }
-    if (result.empty())
+    if (temp.empty())
     {
         cout << "FRULA"
              << "\n";
     }
     else
     {
-        cout << result << "\n";
+        cout << temp << "\n";
     }
 }
