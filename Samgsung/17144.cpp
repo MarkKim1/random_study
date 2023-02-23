@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 int R, C, T;
 int main()
@@ -10,6 +11,7 @@ int main()
     vector<int> x = {0, 1, 0, -1};
     vector<int> y = {1, 0, -1, 0};
     vector<pair<int, int>> vacuum;
+    queue<pair<int, int>> dust;
     int result = 0;
     for (int i = 0; i < R; i++)
     {
