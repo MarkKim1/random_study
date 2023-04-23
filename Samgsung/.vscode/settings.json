@@ -38,6 +38,7 @@
         "__functional_03": "cpp",
         "__functional_base_03": "cpp",
         "functional": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "array": "cpp"
     }
 }
