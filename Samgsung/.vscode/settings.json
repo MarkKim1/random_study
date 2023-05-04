@@ -39,6 +39,7 @@
         "__functional_base_03": "cpp",
         "functional": "cpp",
         "numeric": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "initializer_list": "cpp"
     }
 }
