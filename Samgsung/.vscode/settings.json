@@ -40,6 +40,9 @@
         "functional": "cpp",
         "numeric": "cpp",
         "array": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp",
+        "__config": "cpp"
     }
 }
