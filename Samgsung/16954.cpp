@@ -4,7 +4,6 @@
 #include <limits.h>
 using namespace std;
 char board[8][8];
-bool visited[8][8];
 
 vector<int> dx = {-1, -1, -1, 0, 0, 0, 1, 1, 1};
 vector<int> dy = {-1, 0, 1, -1, 0, 1, -1, 0, 1};
@@ -13,11 +12,16 @@ int ans = 0;
 
 void move()
 {
-    for (int i = 7; i >= 0; i--)
+    for (int i = 7; i >= 1; i--)
     {
         for (int j = 7; j >= 0; j--)
         {
-                }
+            board[i][j] = board[i - 1][j];
+        }
+    }
+    for (int i = 0; i < 7; i++)
+    {
+        board[0][i] = '.';
     }
 }
 
@@ -25,7 +29,6 @@ void solve()
 {
     queue<pair<int, int>> q;
     q.push({7, 0});
-    visited[7][0] = true;
     int time = 0;
     while (!q.empty())
     {
@@ -36,7 +39,9 @@ void solve()
             int x = curr.first;
             int y = curr.second;
             q.pop();
-            if (time >= 8 || (x == 7 and y == 7))
+            if (board[x][y] == '#')
+                continue;
+            if (time >= 8 || (x == 0 and y == 7))
             {
                 ans = 1;
                 return;
@@ -45,13 +50,12 @@ void solve()
             {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
-                if (min(nx, ny) >= 0 and nx < 8 and ny < 8 and board[nx][ny] != '#' and visited[nx][ny] == false)
+                if (min(nx, ny) >= 0 and nx < 8 and ny < 8 and board[nx][ny] != '#')
                 {
                     if (nx >= 1 and board[nx - 1][ny] == '#')
                     {
                         continue;
                     }
-                    visited[nx][ny] = true;
                     q.push({nx, ny});
                 }
             }
