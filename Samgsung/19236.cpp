@@ -29,7 +29,7 @@ void solve()
 {
     vector<vector<int>> C_MAP(4, vector<int>(4));
     vector<FISH> C_FISH(20);
-    COPY(C_MAP, C_FISH);
+    COPY(C_MAP, C_FISH, map, fish);
 }
 
 bool comp(FISH a, FISH b)
