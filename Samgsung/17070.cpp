@@ -12,6 +12,7 @@ int main()
     int board[20][20];
     for (int i = 0; i < N; i++)
     {
+        cout << "SEDFSF" << endl;
         for (int j = 0; j < N; j++)
         {
             cin >> board[i][j];
