@@ -1,45 +1,51 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#define endl "\n"
+#define MAX 4
 using namespace std;
-
 struct FISH
 {
-    int num;
-    int x, y, dir;
+    int x, y, Dir;
     bool live;
 };
-vector<vector<int>> map(4, vector<int>(4));
-vector<FISH> fish(20);
 
-void COPY(vector<vector<int>> &C_MAP, vector<FISH> &C_FISH, vector<vector<int>> &map, vector<FISH> fish)
+int ans = 0;
+int map[MAX][MAX];
+FISH fish[20];
+
+void move_fish()
 {
-    int fishcount = 0;
+}
+
+void copy(int a[][4], FISH b[], int c[][4], FISH d[])
+{
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
         {
-            map[i][j] = C_MAP[i][j];
-            // C_FISH[fishcount++] = { map[i][j],i,j}
+            a[i][j] = c[i][j];
         }
+    }
+    for (int i = 0; i < 20; i++)
+    {
+        b[i] = d[i];
     }
 }
 
-void solve()
+// 1. 맵 과 물고기 정보를 카피한다.
+// 2. 물고기를 이동시킨다
+// 3. 상어를 이동시킨다.
+// 4. 백트랙킹을 통해 상어가 잡아먹을수 있는 최대값을 찾는다
+void solve(int i, int j, int dir, int curr_num)
 {
-    vector<vector<int>> C_MAP(4, vector<int>(4));
-    vector<FISH> C_FISH(20);
-    COPY(C_MAP, C_FISH, map, fish);
+    int C_MAP[MAX][MAX];
+    FISH C_FISH[20];
+    copy(C_MAP, C_FISH, map, fish);
+    move_fish();
 }
 
-bool comp(FISH a, FISH b)
+void input()
 {
-    return a.num < b.num;
-}
-
-int main()
-{
-    int fishcount = 0;
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
@@ -47,9 +53,19 @@ int main()
             int a, b;
             cin >> a >> b;
             map[i][j] = a;
-            fish[fishcount++] = {a, i, j, b, true};
+            fish[a] = {i, j, b, true};
         }
     }
-    sort(fish.begin(), fish.end(), comp);
-    solve();
+}
+
+int main()
+{
+    input();
+    // 초기 세팅 상어가 (0,0)dp 있는 물고기를 잡아먹는다
+    int num = map[0][0];
+    fish[num].live = false;
+    map[0][0] = -1;
+    int dir = fish[num].Dir;
+    solve(0, 0, dir, num);
+    cout << ans << endl;
 }
